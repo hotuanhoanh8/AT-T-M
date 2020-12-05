@@ -1,0 +1,54 @@
+
+<h1>{% block title %} Hien thi thong tin {% endblock %}</h1>
+  <table border="1">
+            <thead>
+                <tr>
+                    <th>Ma khach hang</th>
+                    <th>Ho ten</th>
+                    <th>Dia chi</th>
+                    <th>So dien thoai</th>
+                    <th>Ngay sinh</th>
+                    <th>Ngay dang ky</th>
+                    <th>Doanh so</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    {% for item in row %}
+                    <td>
+                        {{item}}
+                    </td>
+                    {% endfor %}
+                </tr>  
+                {% endfor %}
+            </tbody>
+  </table>           
+{% block content %}
+    <div class="container">
+        <h1>Chinh sua thong tin khach hang</h1>
+        <br>
+        <form action="" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" style="width:50%;" placeholder="Ho Ten" name="hoten" value="{{
+              request.form.hoten }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" style="width:50%;" placeholder="Dia chi" name="dchi" value="{{
+            request.form.dchi }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" style="width:50%;" placeholder="So dien thoai" name="sodt" value="{{
+            request.form.sodt }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" style="width:50%;" placeholder="Ngay sinh" name="ngSinh" value="{{
+            request.form.ngSinh }}">
+          </div>
+          <input class="btn btn-success" type="submit" value="Chinh sua">
+        </form>
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+            {% endif %}
+    </div>
+{% endblock %}
